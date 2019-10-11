@@ -1,0 +1,33 @@
+{
+  "name": "store-manager-backend",
+  "version": "1.0.0",
+  "description": "a store management application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel ./src -d ./dist --copy-files",
+    "start": "npm run build && nodemon dist/app.js"
+  },
+  "author": "david muhanguzi",
+  "license": "ISC",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "body-parser": "^1.19.0",
+    "core-js": "^3.2.1",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "path": "^0.12.7",
+    "pg": "^7.12.1",
+    "pg-hstore": "^2.3.3",
+    "regenerator-runtime": "^0.13.3",
+    "sequelize": "^5.19.2",
+    "sequelize-cli": "^5.5.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.2",
+    "@babel/core": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
+    "nodemon": "^1.19.3"
+  }
+}
