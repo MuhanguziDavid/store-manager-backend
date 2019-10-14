@@ -36,7 +36,13 @@ NB: No authentication is required for any of the endpoints :)
 
 `GET /`
 
-Returns an item
+Returns store items
+
+### Retrieve single store item:
+
+`GET /items/:artNumber`
+
+Returns a single store item
 
 ### Add store item:
 
