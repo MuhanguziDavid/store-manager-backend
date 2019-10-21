@@ -1,17 +1,65 @@
+import { Op } from 'sequelize';
+import { sequelize} from '../models'
 import models from '../models';
 import Errors from '../helpers/errors';
 
 class ItemsController {
-  static async retrieveItems(req, res) {
+  static async retrieveItems(req, res, next) {
+    const { artNumber, description, color, store, createdAt  } = req.query;
     try {
-      const foundItems = await models.item.findAll();
+      let artNumberFilter = { [Op.ne]: null }
+      let descriptionFilter = { [Op.ne]: null }
+      let colorFilter = { [Op.ne]: null }
+      let storeFilter = { [Op.ne]: null }
+      let createdAtFilter = { [Op.ne]: null }
+      if (artNumber) {
+        artNumberFilter = { [Op.eq]: artNumber }
+      }
+      if (description) {
+        descriptionFilter = { [Op.eq]: description }
+      }
+      if (color) {
+        colorFilter = { [Op.eq]: color }
+      }
+      if (store) {
+        storeFilter = { [Op.eq]: store }
+      }
+      if (createdAt) {
+        createdAtFilter = { [Op.gt]: createdAt }
+      }
+      const foundItems = await models.item.findAll({
+        where: {
+          artNumber: artNumberFilter,
+          description: descriptionFilter,
+          color: colorFilter,
+          store: storeFilter,
+          createdAt: createdAtFilter,
+        }
+      });
       return res.status(200).json({
         success: true,
         message: 'Items retrieved successfully',
         foundItems
       })
     } catch (error) {
-      return Errors.errorHandler(res, 500, error);
+      next(error);
+    }
+  }
+
+  static async retrieveUniqueItems(req, res, next) {
+    try {
+      const foundItems = await models.item.findAll({
+        attributes: [
+          [sequelize.fn('DISTINCT', sequelize.col('artNumber')) ,'artNumber'],
+          'description', ]
+      });
+      return res.status(200).json({
+        success: true,
+        message: 'Items retrieved successfully',
+        foundItems
+      })
+    } catch (error) {
+      next(error);
     }
   }
 

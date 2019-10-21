@@ -21,11 +21,3 @@ const server = http.createServer(app);
 server.listen(process.env.PORT, () => {
   console.log(`Store manager listening on port ${process.env.PORT}!`);
 });
-
-// sequelize.sync().then(() => {
-//   app.listen(process.env.PORT, () => {
-//     console.log(`Store manager listening on port ${process.env.PORT}!`);
-//   });
-// }) .catch(err => {
-//   console.error('Unable to connect to the database:', err);
-// });
