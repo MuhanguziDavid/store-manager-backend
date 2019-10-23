@@ -89,7 +89,7 @@ class ItemsController {
     }
   }
 
-  static async postItem(req, res) {
+  static async postItem(req, res, next) {
     try {
       const newItem = await models.item.create(req.body);
       return res.status(200).json({
@@ -98,7 +98,8 @@ class ItemsController {
         item: newItem,
       })
     } catch (error) {
-      return Errors.errorHandler(res, 500, error);
+      next(error);
+      // return Errors.errorHandler(res, 500, error);
     }
   }
 }

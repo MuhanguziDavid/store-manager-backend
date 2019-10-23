@@ -16,11 +16,12 @@
     "operatorsAliases": false
   },
   "production": {
-    "username": "postgres",
-    "password": "postgres",
-    "database": "store_manager",
-    "host": "127.0.0.1",
+    "username": "cqkrqwkmfiihnx",
+    "password": "a414970f1155f3737c58189d112a5c3a4be722b0ce0aab85f60fe0a66c6e91b3",
+    "database": "d9sd4eo79pnjtf",
+    "host": "ec2-54-83-55-122.compute-1.amazonaws.com",
     "dialect": "postgres",
+    "url": "postgres://cqkrqwkmfiihnx:a414970f1155f3737c58189d112a5c3a4be722b0ce0aab85f60fe0a66c6e91b3@ec2-54-83-55-122.compute-1.amazonaws.com:5432/d9sd4eo79pnjtf",
     "operatorsAliases": false
   }
 }
