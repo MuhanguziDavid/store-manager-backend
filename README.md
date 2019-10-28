@@ -34,7 +34,7 @@ NB: No authentication is required for any of the endpoints :)
 
 ### Retrieve store items:
 
-`GET /`
+`GET /` could add a query e.g. `GET /?artNumber=s001&color=black` to return only black items of artNumber s001
 
 Returns store items
 
@@ -63,6 +63,26 @@ Example request body:
 Returns an item
 
 Required fields: `all fields are required`
+
+### Edit store item:
+
+`PUT /items:id`
+
+Example request body:
+
+```source-json
+{
+  "artNumber": "s001",
+  "color": "black",
+  "description": "this is a samsung galaxy watch",
+  "quantity": "10",
+  "store": "ntinda"
+}
+```
+
+Returns an edited item
+
+Required fields: `none of the field is required. Only enter the field you want to edit`
 
 -----
 
