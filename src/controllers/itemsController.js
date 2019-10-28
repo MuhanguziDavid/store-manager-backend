@@ -99,7 +99,26 @@ class ItemsController {
       })
     } catch (error) {
       next(error);
-      // return Errors.errorHandler(res, 500, error);
+    }
+  }
+
+  static async editItem(req, res, next) {
+    try {
+      const itemId = req.params.id;
+      console.log('itemId', itemId);
+      const foundItem = await models.item.findByPk(itemId);
+      if (!foundItem) {
+        return Errors.errorHandler(res, 404, 'Item does not exist');
+      }
+      const editedItem = await models.item.update(req.body,
+        { where: { id: itemId }, returning: true, plain: true });
+      return res.status(200).json({
+        success: true,
+        message: 'Item edited successfully',
+        item: editedItem[1],
+      })
+    } catch (error) {
+      next(error);
     }
   }
 }
