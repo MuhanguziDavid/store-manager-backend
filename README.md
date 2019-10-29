@@ -64,6 +64,8 @@ Returns an item
 
 Required fields: `all fields are required`
 
+NB: If an item with the same `artNumber`, `color`, and `store` already exists, the quantity of the posted and existing items will be added and left as one item.
+
 ### Edit store item:
 
 `PUT /items:id`
@@ -83,6 +85,14 @@ Example request body:
 Returns an edited item
 
 Required fields: `none of the field is required. Only enter the field you want to edit`
+
+### Delete store item:
+
+`DELETE /items:id`
+
+No body required
+
+Returns a message saying that the item was successfully deleted
 
 -----
 
