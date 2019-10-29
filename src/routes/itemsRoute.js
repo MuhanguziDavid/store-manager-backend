@@ -8,5 +8,6 @@ router.get('/uniqueitems', ItemsController.retrieveUniqueItems);
 router.post('/items', ItemsController.postItem);
 router.get('/items/:artNumber', ItemsController.retrieveSingleItem);
 router.put('/items/:id', ItemsController.editItem);
+router.delete('/items/:id', ItemsController.deleteItem);
 
 export default router;
