@@ -91,7 +91,24 @@ class ItemsController {
 
   static async postItem(req, res, next) {
     try {
-      const newItem = await models.item.create(req.body);
+      let newItem;
+      const similarItem = await models.item.findAll({
+        where: {
+          artNumber: req.body.artNumber,
+          color: req.body.color,
+          store: req.body.store
+        },
+        returning: true,
+        plain: true
+      })
+      if (similarItem) {
+        req.body.quantity = Number(req.body.quantity) + similarItem.dataValues.quantity;
+        const updatedItem = await models.item.update(req.body,
+          { where: { id: similarItem.dataValues.id }, returning: true, plain: true });
+        newItem = updatedItem[1];
+      } else {
+        newItem = await models.item.create(req.body);
+      }
       return res.status(200).json({
         success: true,
         message: 'Item created successfully',
