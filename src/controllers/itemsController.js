@@ -96,6 +96,7 @@ class ItemsController {
         where: {
           artNumber: req.body.artNumber,
           color: req.body.color,
+          description: req.body.description,
           store: req.body.store
         },
         returning: true,

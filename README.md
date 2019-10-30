@@ -64,7 +64,7 @@ Returns an item
 
 Required fields: `all fields are required`
 
-NB: If an item with the same `artNumber`, `color`, and `store` already exists, the quantity of the posted and existing items will be added and left as one item.
+NB: If an item with the same `artNumber`, `color`, `description`, and `store` already exists, the quantity of the posted and existing items will be added and left as one item.
 
 ### Edit store item:
 
