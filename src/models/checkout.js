@@ -1,7 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Checkout = sequelize.define('checkout', {
-    checkoutTime: DataTypes.DATE,
     collector: DataTypes.STRING,
     description: DataTypes.STRING,
     quantity: DataTypes.INTEGER
