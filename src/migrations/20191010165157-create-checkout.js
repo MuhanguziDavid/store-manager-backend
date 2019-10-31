@@ -8,9 +8,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      checkoutTime: {
-        type: Sequelize.DATE
-      },
       collector: {
         type: Sequelize.STRING
       },
