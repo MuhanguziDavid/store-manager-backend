@@ -34,7 +34,7 @@ NB: No authentication is required for any of the endpoints :)
 
 ### Retrieve store items:
 
-`GET /` could add a query e.g. `GET /?artNumber=s001&color=black` to return only black items of artNumber s001
+`GET /items` could add a query e.g. `GET /?artNumber=s001&color=black` to return only black items of artNumber s001
 
 Returns store items
 
@@ -93,6 +93,26 @@ Required fields: `none of the field is required. Only enter the field you want 
 No body required
 
 Returns a message saying that the item was successfully deleted
+
+### Checkout item:
+
+`POST /checkout`
+
+Example request body:
+
+```source-json
+{
+  "collector": "David",
+  "description": "picked the samsung galaxy watch on credit",
+  "quantity": "1"
+}
+```
+
+Returns a checked out item
+
+Required fields: `all fields are required`
+
+NB: The quantity of the item in the items table is deducted by the quantity checked out.
 
 -----
 
