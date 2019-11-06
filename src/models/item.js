@@ -13,6 +13,10 @@ module.exports = (sequelize, DataTypes) => {
       as: 'items',
       onDelete: 'CASCADE',
     });
+    Item.belongsTo(models.stores, {
+      foreignKey: 'storeId',
+      as: 'stores',
+    });
   };
   return Item;
 };

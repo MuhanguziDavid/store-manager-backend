@@ -2,7 +2,6 @@
 module.exports = (sequelize, DataTypes) => {
   const Checkout = sequelize.define('checkout', {
     collector: DataTypes.STRING,
-    description: DataTypes.STRING,
     quantity: DataTypes.INTEGER
   }, {
 
