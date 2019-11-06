@@ -56,7 +56,7 @@ Example request body:
   "color": "black",
   "description": "this is a samsung galaxy watch",
   "quantity": "10",
-  "store": "ntinda"
+  "storeId": 3
 }
 ```
 
@@ -78,7 +78,7 @@ Example request body:
   "color": "black",
   "description": "this is a samsung galaxy watch",
   "quantity": "10",
-  "store": "ntinda"
+  "storeId": 3
 }
 ```
 
@@ -103,7 +103,6 @@ Example request body:
 ```source-json
 {
   "collector": "David",
-  "description": "picked the samsung galaxy watch on credit",
   "quantity": "1"
 }
 ```
@@ -113,6 +112,22 @@ Returns a checked out item
 Required fields: `all fields are required`
 
 NB: The quantity of the item in the items table is deducted by the quantity checked out.
+
+### Create Store:
+
+`POST /store`
+
+Example request body:
+
+```source-json
+{
+  "store": "luzira"
+}
+```
+
+Returns a created store
+
+Required fields: `all fields are required`
 
 -----
 

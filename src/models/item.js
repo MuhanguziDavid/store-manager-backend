@@ -5,7 +5,6 @@ module.exports = (sequelize, DataTypes) => {
     color: DataTypes.STRING,
     description: DataTypes.STRING,
     quantity: DataTypes.INTEGER,
-    store: DataTypes.STRING
   }, {});
   Item.associate = function(models) {
     Item.hasMany(models.checkout, {

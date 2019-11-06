@@ -5,12 +5,12 @@ import Errors from '../helpers/errors';
 
 class ItemsController {
   static async retrieveItems(req, res, next) {
-    const { artNumber, description, color, store, createdAt  } = req.query;
+    const { artNumber, description, color, createdAt, storeId } = req.query;
     try {
       let artNumberFilter = { [Op.ne]: null }
       let descriptionFilter = { [Op.ne]: null }
       let colorFilter = { [Op.ne]: null }
-      let storeFilter = { [Op.ne]: null }
+      let storeIdFilter = { [Op.ne]: null }
       let createdAtFilter = { [Op.ne]: null }
       if (artNumber) {
         artNumberFilter = { [Op.eq]: artNumber }
@@ -21,8 +21,8 @@ class ItemsController {
       if (color) {
         colorFilter = { [Op.eq]: color }
       }
-      if (store) {
-        storeFilter = { [Op.eq]: store }
+      if (storeId) {
+        storeIdFilter = { [Op.eq]: storeId }
       }
       if (createdAt) {
         createdAtFilter = { [Op.gt]: createdAt }
@@ -32,7 +32,7 @@ class ItemsController {
           artNumber: artNumberFilter,
           description: descriptionFilter,
           color: colorFilter,
-          store: storeFilter,
+          storeId: storeIdFilter,
           createdAt: createdAtFilter,
         }
       });
@@ -97,7 +97,7 @@ class ItemsController {
           artNumber: req.body.artNumber,
           color: req.body.color,
           description: req.body.description,
-          store: req.body.store
+          storeId: req.body.storeId
         },
         returning: true,
         plain: true
