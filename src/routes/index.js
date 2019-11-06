@@ -1,5 +1,6 @@
 import itemsRoute from './itemsRoute';
 import checkoutRoute from './checkoutRoute';
+import storesRoute from './storesRoute';
 
 const apiPrefix = '/api/v1';
 
@@ -7,6 +8,7 @@ const apiPrefix = '/api/v1';
 const routes = [
   itemsRoute,
   checkoutRoute,
+  storesRoute
 ];
 export default (app) => {
   routes.forEach(route => app.use(apiPrefix, route));
