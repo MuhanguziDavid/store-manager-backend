@@ -47,6 +47,7 @@ class ReportsController {
             [Op.gt]: startDateFilter
           }
         },
+        attributes: ['id', 'collector', 'quantity', 'createdAt', 'updatedAt'],
         include: [{
           model: models.item,
           as: 'items',
@@ -69,7 +70,7 @@ class ReportsController {
       return res.status(200).json({
         success: true,
         message: 'Report retrieved successfully',
-        report: retrievedReport,
+        checkoutReport: retrievedReport,
       })
     } catch (error) {
       next(error);

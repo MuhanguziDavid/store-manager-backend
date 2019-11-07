@@ -38,6 +38,8 @@ NB: No authentication is required for any of the endpoints :)
 
 Returns store items
 
+NB: description search uses keywords (you dont have to enter the whole description)
+
 ### Retrieve single store item:
 
 `GET /items/:artNumber`
@@ -128,6 +130,18 @@ Example request body:
 Returns a created store
 
 Required fields: `all fields are required`
+
+### Generate Cehckout Report:
+
+`GET /reports`
+
+always add a `startDate` and `endDate` as url query e.g. `GET /reports?startDate=2019-10-15T00:05:32.000Z&endDate=2019-11-07T00:05:32.000Z` to return a report of checkouts during that period.
+
+dates should be of `iso 8601` format
+
+Returns a checkout report
+
+NB: On top of startDate and endDate, you could add other queries e.g. `artNumber=s001&store=ntinda&color=black` to return only black items of artNumber s001 in the ntinda store.
 
 -----
 
