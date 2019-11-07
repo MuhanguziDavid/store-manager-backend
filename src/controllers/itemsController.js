@@ -5,24 +5,24 @@ import Errors from '../helpers/errors';
 
 class ItemsController {
   static async retrieveItems(req, res, next) {
-    const { artNumber, description, color, createdAt, storeId } = req.query;
+    const { artNumber, description, color, createdAt, store } = req.query;
     try {
       let artNumberFilter = { [Op.ne]: null }
       let descriptionFilter = { [Op.ne]: null }
       let colorFilter = { [Op.ne]: null }
-      let storeIdFilter = { [Op.ne]: null }
+      let storeFilter = { [Op.ne]: null }
       let createdAtFilter = { [Op.ne]: null }
       if (artNumber) {
         artNumberFilter = { [Op.eq]: artNumber }
       }
       if (description) {
-        descriptionFilter = { [Op.eq]: description }
+        descriptionFilter = { [Op.substring]: description }
       }
       if (color) {
         colorFilter = { [Op.eq]: color }
       }
-      if (storeId) {
-        storeIdFilter = { [Op.eq]: storeId }
+      if (store) {
+        storeFilter = { [Op.eq]: store }
       }
       if (createdAt) {
         createdAtFilter = { [Op.gt]: createdAt }
@@ -32,9 +32,17 @@ class ItemsController {
           artNumber: artNumberFilter,
           description: descriptionFilter,
           color: colorFilter,
-          storeId: storeIdFilter,
           createdAt: createdAtFilter,
-        }
+        },
+        attributes: ['artNumber', 'color', 'description', 'quantity', 'createdAt', 'updatedAt'],
+        include: [{
+          model: models.stores,
+          as: 'stores',
+          where: {
+            store: storeFilter
+          },
+          attributes: ['store']
+        }]
       });
       return res.status(200).json({
         success: true,
