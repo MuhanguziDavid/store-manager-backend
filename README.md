@@ -92,9 +92,9 @@ Required fields: `none of the field is required. Only enter the field you want 
 
 `DELETE /items:id`
 
-No body required
-
 Returns a message saying that the item was successfully deleted
+
+NB: Deleting an item will delete all checkouts related to the item
 
 ### Checkout item:
 
@@ -130,6 +130,36 @@ Example request body:
 Returns a created store
 
 Required fields: `all fields are required`
+
+### Get Stores:
+
+`GET /store`
+
+Returns all stores
+
+### Edit Store:
+
+`PUT /store/:id`
+
+Example request body:
+
+```source-json
+{
+  "store": "luzira"
+}
+```
+
+Returns an edited store
+
+Required fields: `all fields are required`
+
+### Delete Store:
+
+`POST /store/:id`
+
+Returns a message saying that the store was successfully deleted
+
+NB: Deleting a store will delete all items and checkouts related to it
 
 ### Generate Cehckout Report:
 
