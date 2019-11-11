@@ -81,7 +81,7 @@ class ItemsController {
       })
       console.log('foundItem', foundItem.length);
       if (foundItem.length === 0) {
-        return res.status(200).json({
+        return res.status(204).json({
           success: true,
           message: 'The requested item does not exist',
           foundItem
@@ -118,7 +118,7 @@ class ItemsController {
       } else {
         newItem = await models.item.create(req.body);
       }
-      return res.status(200).json({
+      return res.status(201).json({
         success: true,
         message: 'Item created successfully',
         item: newItem,
