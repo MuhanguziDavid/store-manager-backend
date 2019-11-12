@@ -67,14 +67,33 @@ class ReportsController {
           }]
         }]
       });
+
+      const formattedReport = retrievedReport.map(ReportsController.rearrangeReport)
+
       return res.status(200).json({
         success: true,
         message: 'Report retrieved successfully',
-        checkoutReport: retrievedReport,
+        checkoutReport: formattedReport,
       })
     } catch (error) {
       next(error);
     }
+  }
+
+  static rearrangeReport (reportObject) {
+    const formattedReport = {
+      id: reportObject.id,
+      collector: reportObject.collector,
+      checkoutQuantity: reportObject.quantity,
+      createdAt: reportObject.createdAt,
+      updatedAt: reportObject.updatedAt,
+      artNumber: reportObject.items.artNumber,
+      color: reportObject.items.color,
+      description: reportObject.items.description,
+      itemQuantity: reportObject.items.quantity,
+      store: reportObject.items.stores.store,
+    };
+    return formattedReport;
   }
 }
 
