@@ -30,6 +30,11 @@ The following should be installed in your machine:
 
 -----
 
+## End points
+
+### Postman Collection
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/caa17cdfa2096e042c6a)
+
 NB: No authentication is required for any of the endpoints :)
 
 ### Retrieve store items:
