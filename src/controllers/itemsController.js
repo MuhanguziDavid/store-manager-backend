@@ -34,7 +34,7 @@ class ItemsController {
           color: colorFilter,
           createdAt: createdAtFilter,
         },
-        attributes: ['artNumber', 'color', 'description', 'quantity', 'createdAt', 'updatedAt'],
+        attributes: ['id', 'artNumber', 'color', 'description', 'quantity', 'createdAt', 'updatedAt'],
         include: [{
           model: models.stores,
           as: 'stores',
@@ -59,7 +59,7 @@ class ItemsController {
       const foundItems = await models.item.findAll({
         attributes: [
           [sequelize.fn('DISTINCT', sequelize.col('artNumber')) ,'artNumber'],
-          'description', ]
+          'description', 'id', ]
       });
       return res.status(200).json({
         success: true,
