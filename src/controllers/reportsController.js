@@ -56,14 +56,14 @@ class ReportsController {
             description: descriptionFilter,
             color: colorFilter,
           },
-          attributes: ['artNumber', 'color', 'description', 'quantity'],
+          attributes: ['id', 'artNumber', 'color', 'description', 'quantity'],
           include: [{
             model: models.stores,
             as: 'stores',
             where: {
               store: storeFilter
             },
-            attributes: ['store']
+            attributes: ['id', 'store']
           }]
         }]
       });
@@ -87,10 +87,12 @@ class ReportsController {
       checkoutQuantity: reportObject.quantity,
       createdAt: reportObject.createdAt,
       updatedAt: reportObject.updatedAt,
+      itemId: reportObject.items.id,
       artNumber: reportObject.items.artNumber,
       color: reportObject.items.color,
       description: reportObject.items.description,
       itemQuantity: reportObject.items.quantity,
+      storeId: reportObject.items.stores.id,
       store: reportObject.items.stores.store,
     };
     return formattedReport;
