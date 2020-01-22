@@ -41,7 +41,7 @@ class ItemsController {
           where: {
             store: storeFilter
           },
-          attributes: ['store']
+          attributes: ['id', 'store']
         }]
       });
       return res.status(200).json({
