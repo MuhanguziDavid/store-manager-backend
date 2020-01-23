@@ -65,7 +65,7 @@ class CheckoutController {
         return Errors.errorHandler(
           res,
           404,
-          `Only ${foundItem.dataValues.quantity} items of this type left in the store, please select fewer items for checkout`
+          `Only ${revertPreviousQuanity} items of this type left in the store, please select fewer items for checkout`
         );
       }
 
