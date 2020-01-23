@@ -33,6 +33,7 @@ class ItemsController {
           description: descriptionFilter,
           color: colorFilter,
           createdAt: createdAtFilter,
+          quantity: { [Op.gt]: 0 }
         },
         attributes: ['id', 'artNumber', 'color', 'description', 'quantity', 'createdAt', 'updatedAt'],
         include: [{
