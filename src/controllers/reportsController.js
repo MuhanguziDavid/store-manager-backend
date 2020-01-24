@@ -43,8 +43,8 @@ class ReportsController {
         where: {
           collector: collectorFilter,
           createdAt: {
-            [Op.lt]: endDateFilter,
-            [Op.gt]: startDateFilter
+            [Op.lte]: endDateFilter,
+            [Op.gte]: startDateFilter
           }
         },
         attributes: ['id', 'collector', 'quantity', 'createdAt', 'updatedAt'],
