@@ -1,0 +1,20 @@
+extends layout
+
+block layout-content
+  div.View
+    h1.Banner Store Manager
+    div.Message
+      div
+        a(href='http://127.0.0.1:8000/api/v1/stores')
+          button.btn.btn-primary(type='submit') Create New Store
+      div.Title
+        h2 Your Stores
+      div.Details
+        table
+          each retrievedStore, i in retrievedStores
+            tr
+              td #{retrievedStore.dataValues.store}
+              td
+                a(href='http://127.0.0.1:8000/api/v1/stores') edit
+              td
+                a(href='http://127.0.0.1:8000/api/v1/stores') remove

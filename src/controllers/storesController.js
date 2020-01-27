@@ -22,11 +22,17 @@ class StoresController {
       const retrievedStores = await models.stores.findAll({
         attributes: ['id', 'store']
       });
-      return res.status(200).json({
-        success: true,
-        message: 'Stores Retieved Successfully',
-        stores: retrievedStores,
-      })
+      res.render(
+        'index',
+        {
+          title: "Stores",
+          retrievedStores: retrievedStores,
+        });
+      // return res.status(200).json({
+      //   success: true,
+      //   message: 'Stores Retieved Successfully',
+      //   stores: retrievedStores,
+      // })
     } catch (error) {
       next(error);
     }
