@@ -30,6 +30,21 @@ The following should be installed in your machine:
 
 -----
 
+## How To Contribute
+
+### Issues
+
+Issues are always very welcome. Please be sure to follow the [issue template](https://github.com/andela/engineering-playbook/issues/new).
+
+### Pull requests
+
+I am glad to get pull request if anything is missing or something is buggy. However, there are a couple of things you can do to make life easier for the maintainer:
+
+- Explain the issue that your PR is solving - or link to an existing issue
+
+
+-----
+
 ## End points
 
 ### Postman Collection
@@ -168,7 +183,7 @@ NB: Deleting a store will delete all items and checkouts related to it
 
 ### Generate Cehckout Report:
 
-`GET /reports`
+`GET /reports/checkout`
 
 always add a `startDate` and `endDate` as url query e.g. `GET /reports?startDate=2019-10-15T00:05:32.000Z&endDate=2019-11-07T00:05:32.000Z` to return a report of checkouts during that period.
 
@@ -178,16 +193,14 @@ Returns a checkout report
 
 NB: On top of startDate and endDate, you could add other queries e.g. `artNumber=s001&store=ntinda&color=black` to return only black items of artNumber s001 in the ntinda store.
 
------
+### Generate Cehckin Report:
 
-## How To Contribute
+`GET /reports/checkin`
 
-### Issues
+always add a `startDate` and `endDate` as url query e.g. `GET /reports?startDate=2019-10-15T00:05:32.000Z&endDate=2019-11-07T00:05:32.000Z` to return a report of checkouts during that period.
 
-Issues are always very welcome. Please be sure to follow the [issue template](https://github.com/andela/engineering-playbook/issues/new).
+dates should be of `iso 8601` format
 
-### Pull requests
+Returns a checkin report
 
-I am glad to get pull request if anything is missing or something is buggy. However, there are a couple of things you can do to make life easier for the maintainer:
-
-- Explain the issue that your PR is solving - or link to an existing issue
+NB: On top of startDate and endDate, you could add other queries e.g. `artNumber=s001&store=ntinda&color=black` to return only black items of artNumber s001 in the ntinda store.
