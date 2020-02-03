@@ -10,7 +10,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel ./src -d ./dist --copy-files",
-    "start": "npm run build && nodemon --exec babel-node src/app.js"
+    "start": "npm run migrate && npm run build && nodemon --exec babel-node src/app.js",
+    "migrate": "sequelize-cli db:migrate"
   },
   "author": "david muhanguzi",
   "license": "ISC",
