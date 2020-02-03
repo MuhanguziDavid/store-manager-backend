@@ -120,7 +120,7 @@ class ReportsController {
           description: descriptionFilter,
           color: colorFilter,
         },
-        attributes: ['id', 'artNumber', 'color', 'description', 'quantity', 'createdAt', 'updatedAt'],
+        attributes: ['id', 'artNumber', 'color', 'description', 'initialQuantity', 'createdAt', 'updatedAt'],
         include: [{
           model: models.stores,
           as: 'stores',
@@ -167,7 +167,7 @@ class ReportsController {
       artNumber: reportObject.artNumber,
       color: reportObject.color,
       description: reportObject.description,
-      checkoutQuantity: reportObject.quantity,
+      itemQuantity: reportObject.initialQuantity,
       createdAt: reportObject.createdAt,
       updatedAt: reportObject.updatedAt,
       storeId: reportObject.stores.id,

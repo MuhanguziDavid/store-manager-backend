@@ -101,6 +101,8 @@ class ItemsController {
   static async postItem(req, res, next) {
     try {
       let newItem;
+      const { quantity } = req.body;
+      req.body.initialQuantity = quantity;
       const similarItem = await models.item.findAll({
         where: {
           artNumber: req.body.artNumber,
@@ -113,6 +115,7 @@ class ItemsController {
       })
       if (similarItem) {
         req.body.quantity = Number(req.body.quantity) + similarItem.dataValues.quantity;
+        req.body.initialQuantity = Number(req.body.initialQuantity) + similarItem.dataValues.initialQuantity;
         const updatedItem = await models.item.update(req.body,
           { where: { id: similarItem.dataValues.id }, returning: true, plain: true });
         newItem = updatedItem[1];
@@ -135,6 +138,9 @@ class ItemsController {
       const foundItem = await models.item.findByPk(itemId);
       if (!foundItem) {
         return Errors.errorHandler(res, 404, 'Item does not exist');
+      }
+      if (req.body.quantity) {
+        req.body.initialQuantity = req.body.quantity;
       }
       const editedItem = await models.item.update(req.body,
         { where: { id: itemId }, returning: true, plain: true });
