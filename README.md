@@ -20,6 +20,12 @@ The following should be installed in your machine:
 - [Git](https://git-scm.com/downloads)
 - [Node](https://nodejs.org/en/download)
 
+change 1
+and change 2
+and change 3
+more feedback
+more feedback AGAIN
+
 ### Instructions
 
 - Clone this Repo with `$ git clone https://github.com/MuhanguziDavid/store-manager-backend.git`
