@@ -31,10 +31,13 @@ class ReportsController {
         storeFilter = { [Op.eq]: store }
       }
       if (startDate) {
-        startDateFilter = startDate
+        // set time to 00:00:00
+        startDateFilter = moment(startDate, 'YYYY-MM-DD')
       }
       if (endDate) {
-        endDateFilter = endDate
+        // set time to 23:59:59
+        endDateFilter = moment(endDate, 'YYYY-MM-DD HH:mm:ss')
+        endDateFilter.set({h: 23, m: 59, s: 59});
       }
       if (collector) {
         collectorFilter = { [Op.eq]: collector }
@@ -105,10 +108,13 @@ class ReportsController {
         storeFilter = { [Op.eq]: store }
       }
       if (startDate) {
-        startDateFilter = startDate
+        // set time to 00:00:00
+        startDateFilter = moment(startDate, 'YYYY-MM-DD')
       }
       if (endDate) {
-        endDateFilter = endDate
+        // set time to 23:59:59
+        endDateFilter = moment(endDate, 'YYYY-MM-DD HH:mm:ss')
+        endDateFilter.set({h: 23, m: 59, s: 59});
       }
       const retrievedReport = await models.item.findAll({
         where: {
