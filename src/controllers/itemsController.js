@@ -36,6 +36,7 @@ class ItemsController {
           quantity: { [Op.gt]: 0 }
         },
         attributes: ['id', 'artNumber', 'color', 'description', 'quantity', 'createdAt', 'updatedAt'],
+        order: [ ['updatedAt', 'DESC'] ],
         include: [{
           model: models.stores,
           as: 'stores',
@@ -60,7 +61,8 @@ class ItemsController {
       const foundItems = await models.item.findAll({
         attributes: [
           [sequelize.fn('DISTINCT', sequelize.col('artNumber')) ,'artNumber'],
-          'description', 'id', ]
+          'description', 'id', ],
+        order: [ ['artNumber', 'ASC'] ],
       });
       return res.status(200).json({
         success: true,
@@ -78,9 +80,9 @@ class ItemsController {
       const foundItem = await models.item.findAll({
         where: {
           artNumber
-        }
+        },
+        order: [ ['updatedAt', 'DESC'] ],
       })
-      console.log('foundItem', foundItem.length);
       if (foundItem.length === 0) {
         return res.status(204).json({
           success: true,

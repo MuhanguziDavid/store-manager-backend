@@ -51,6 +51,7 @@ class ReportsController {
           }
         },
         attributes: ['id', 'collector', 'quantity', 'createdAt', 'updatedAt'],
+        order: [ ['updatedAt', 'DESC'] ],
         include: [{
           model: models.item,
           as: 'items',
@@ -127,6 +128,7 @@ class ReportsController {
           color: colorFilter,
         },
         attributes: ['id', 'artNumber', 'color', 'description', 'initialQuantity', 'createdAt', 'updatedAt'],
+        order: [ ['createdAt', 'DESC'] ],
         include: [{
           model: models.stores,
           as: 'stores',

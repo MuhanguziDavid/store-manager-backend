@@ -20,7 +20,8 @@ class StoresController {
   static async retrieveStores(req, res, next) {
     try {
       const retrievedStores = await models.stores.findAll({
-        attributes: ['id', 'store']
+        attributes: ['id', 'store'],
+        order: [ ['store', 'ASC'] ],
       });
       return res.status(200).json({
         success: true,
