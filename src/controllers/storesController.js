@@ -23,11 +23,17 @@ class StoresController {
         attributes: ['id', 'store'],
         order: [ ['store', 'ASC'] ],
       });
-      return res.status(200).json({
-        success: true,
-        message: 'Stores Retieved Successfully',
-        stores: retrievedStores,
-      })
+      res.render(
+        'index',
+        {
+          title: "Stores",
+          retrievedStores: retrievedStores,
+        });
+      // return res.status(200).json({
+      //   success: true,
+      //   message: 'Stores Retieved Successfully',
+      //   stores: retrievedStores,
+      // })
     } catch (error) {
       next(error);
     }
